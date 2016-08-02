@@ -7,11 +7,12 @@ there yet. At this moment, it can only send your notes to Phabricator.
   
   =org-arc_todo= depends on the =Arcanist= tool. The minimal
   configuration for =Arcanist= is the URI to the Phabricator server
-  and credential tokens.
+  and credential tokens. Please refer to [[https://secure.phabricator.com/book/phabricator/article/arcanist/][Arcanist User Guide]].
 
   I would recommend to set these two variables at least at user level
   so that you could use =org_arc_todo= anywhere regardless the working
   directory (/default-directory/ in Emacs).
+
 * Usage
 ** Send Org-mode Notes to Phabricator
 
@@ -64,7 +65,6 @@ there yet. At this moment, it can only send your notes to Phabricator.
 
 ** NEXT Sync Between Org-mode and Phabricator 
     
-
 * Future Development and Collaboration 
   At this stage, =org_arc_todo= uses the =arc todo= to send notes to
   Phabricator, and we cannot do much with the the =arc todo= command.
