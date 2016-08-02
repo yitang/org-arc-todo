@@ -15,7 +15,7 @@ Here is an example:
 #+begin_example
 \* Tasks
   :PROPERTIES:
-  :arc_project: my big awsome project
+  :arc_project: org_arc_todo project
   :END:
 \*\* Fix documentation
    :PROPERTIES:
@@ -31,6 +31,8 @@ If you place your point under Fix documentation nodes, then
 
 ## [summary of task]
 "Fix documentation"
+## [project]
+--project="org_arc_todo project"
 ## [subscribers]
 --cc="myself"
 ## [subscribers]

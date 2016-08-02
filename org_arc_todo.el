@@ -21,6 +21,7 @@
     (with-current-buffer "*arcanist-todo*"  
       (erase-buffer)
       (insert (format arcanist-todo--task-summary-template (or headline "")))
+      (insert (format arcanist-todo--project-template (or proj_name "")))       
       (mapc '(lambda (arg)
 	       (insert (format arcanist-todo--user-template (or arg ""))))
             (split-string users ", "))
