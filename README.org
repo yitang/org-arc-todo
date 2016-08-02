@@ -1,7 +1,7 @@
 * org_arc_todo
 
 Eventually, =org_arc_todo= would help you to sync your local notes in
-Org-mode to the project tasks in Phabricator, but it is not quite
+Org-mode with the project tasks in Phabricator, but it is not quite
 there yet. At this moment, it could send your notes to Phabricator
 only.
 
