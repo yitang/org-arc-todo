@@ -33,9 +33,9 @@ there yet. At this moment, it can only send your notes to Phabricator.
     :END:
  #+end_example
 
- If you place your point under Fix documentation nodes, then
- /arcanist-todo/ will parase the node and write out in the
- /\*arcanist-todo\*/ buffer, 
+ If you place your point under Fix documentation node, and invoke the
+ *arcanist-todo* command, it will paras the node and dump the output
+ in the /\*arcanist-todo\*/ buffer,
 
  #+begin_example
 
@@ -51,9 +51,10 @@ there yet. At this moment, it can only send your notes to Phabricator.
  --cc="deep"
  #+end_example
 
- If you don't want to manually add anything, just invoke
- *arcanist-todo-finish*, it then parse the buffer and send the content
- to phabricator. Then you will see the echo 
+ You could add some thing manually and or just leave it as it is, and
+ then invoke the *arcanist-todo-finish* command, it parses the buffer
+ and send the content to phabricator. You will see message in the echo
+ area like this
 
  #+begin_example
  Created task T1353: 'Fix documentation' at http://195.2.1.40:80/T47
@@ -66,9 +67,9 @@ there yet. At this moment, it can only send your notes to Phabricator.
 
 * Future Development and Collaboration 
   At this stage, =org_arc_todo= uses the =arc todo= to send notes to
-  Phabricator, and one can't do much with the =arc todo= command. I
-  will update =org_arc_todo= if there's new feature introduced in =arc
-  todo=. 
+  Phabricator, and one can't do much with the =arc todo= command. If
+  there's new feature introduced to =arc todo=, I will update
+  =org_arc_todo= accordingly.
 
   To sync between Org-mode and Phabricator, we have to utilise the
   Phabricator's API, but I can't find useful documentation about it.
