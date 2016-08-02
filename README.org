@@ -2,58 +2,74 @@
 
 Eventually, =org_arc_todo= would help you to sync your local notes in
 Org-mode with the project tasks in Phabricator, but it is not quite
-there yet. At this moment, it could send your notes to Phabricator
-only.
+there yet. At this moment, it can only send your notes to Phabricator.
+* Installation 
+  
+  =org-arc_todo= depends on the =Arcanist= tool. The minimal
+  configuration for =Arcanist= is the URI to the Phabricator server
+  and credential tokens.
 
-=org_arc_todo= will
+  I would recommend to set these two variables at least at user level
+  so that you could use =org_arc_todo= anywhere regardless the working
+  directory (/default-directory/ in Emacs).
+* Usage
+** Send Org-mode Notes to Phabricator
 
-1. file your notes to the relevant projects in Phabricator, and
-2. add subscribes to the created tasks.
+ =org_arc_todo= will
 
-Here is an example: 
+ 1. file your notes to the relevant projects in Phabricator, and
+ 2. add subscribers to the created tasks.
 
-#+begin_example
-\* Tasks
-  :PROPERTIES:
-  :arc_project: org_arc_todo project
-  :END:
-\*\* Fix documentation
+ Here is an example: 
+
+ #+begin_example
+ \* Tasks
    :PROPERTIES:
-   :arc_user: myself, dory, deep
+   :arc_project: org_arc_todo project
    :END:
-#+end_example
+ \*\* Fix documentation
+    :PROPERTIES:
+    :arc_user: myself, dory, deep
+    :END:
+ #+end_example
 
-If you place your point under Fix documentation nodes, then
-/arcanist-todo/ will parase the node and write out in the
-*\*arcanist-todo\** buffer, 
+ If you place your point under Fix documentation nodes, then
+ /arcanist-todo/ will parase the node and write out in the
+ /\*arcanist-todo\*/ buffer, 
 
-#+begin_example
+ #+begin_example
 
-## [summary of task]
-"Fix documentation"
-## [project]
---project="org_arc_todo project"
-## [subscribers]
---cc="myself"
-## [subscribers]
---cc="dory"
-## [subscribers]
---cc="deep"
-#+end_example
+ ## [summary of task]
+ "Fix documentation"
+ ## [project]
+ --project="org_arc_todo project"
+ ## [subscribers]
+ --cc="myself"
+ ## [subscribers]
+ --cc="dory"
+ ## [subscribers]
+ --cc="deep"
+ #+end_example
 
-If you don't want to manually add anything, just invoke
-*arcanist-todo-finish*, it then parse the buffer and send the content
-to phabricator. Then you will see the echo 
+ If you don't want to manually add anything, just invoke
+ *arcanist-todo-finish*, it then parse the buffer and send the content
+ to phabricator. Then you will see the echo 
 
-#+begin_example
-Created task T1353: 'Fix documentation' at http://195.2.1.40:80/T47
-#+end_example
+ #+begin_example
+ Created task T1353: 'Fix documentation' at http://195.2.1.40:80/T47
+ #+end_example
 
+** NEXT Fetch Tasks Phabricator 
 
-** DONE Org-mode --> arc todo
+** NEXT Sync Between Org-mode and Phabricator 
+    
 
-   
-** NEXT arc_todo --> Org-mode
+* Future Development and Collaboration 
+  At this stage, =org_arc_todo= uses the =arc todo= to send notes to
+  Phabricator, and one can't do much with the =arc todo= command. I
+  will update =org_arc_todo= if there's new feature introduced in =arc
+  todo=. 
 
-** arc todo <--> Org-mode
-   
+  To sync between Org-mode and Phabricator, we have to utilise the
+  Phabricator's API, but I can't find useful documentation about it.
+  If you know how, please share it with me and I will update this project.
