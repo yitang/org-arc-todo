@@ -63,10 +63,11 @@
     (with-current-buffer "*arcanist-todo*"  
       (erase-buffer)
       (insert (format org-arc-todo--task-summary-template (or headline "")))
-      (insert (format org-arc-todo--project-template (or proj_name "")))       
-      (mapc (lambda (arg)
-	      (insert (format org-arc-todo--user-template (or arg ""))))
-            (split-string users ", ")))
+      (insert (format org-arc-todo--project-template (or proj_name "")))
+      (when users	
+	(mapc (lambda (arg)
+		(insert (format org-arc-todo--user-template (or arg ""))))
+	      (split-string users ", "))))
     (display-buffer "*arcanist-todo*")))
 
 ;;;###autoload
