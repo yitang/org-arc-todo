@@ -1,12 +1,12 @@
-;;;; * voca-builder.el --- Helps you build up your vocabulary
+;;;; * org-arc-todo.el --- Helps you build up your vocabulary
 ;;
 ;; Copyright (C) 2015 Yi Tang
 ;;
 ;; Author: Yi Tang <yi.tang.uk@me.com>
-;; Keywords: English vocabulary 
+;; Keywords: Phabricator
 ;; Created: 28th March 2015
-;; Package-Requires: ((popup "0.5.2"))
-;; URL: https://github.com/yitang/voca-builder
+;; Package-Requires: ((org-mode "8.2"))
+;; URL: https://github.com/yitang/org-arc-todo
 ;; Version: 0.1.0
 ;;
 ;; This program is free software; you can redistribute it and/or modify
@@ -24,27 +24,16 @@
 ;;
 ;;; * Commentary:
 ;;
-;; voca-builder is an Emacs package that aimed to help you build up your
-;; vocabulary by automating the most step in the process, so that you
-;; actually spent time in learning new words.
-;; It will do the checking, and shows the meaning as a popup above the
-;; text. It also records the meaning and the sentence containing the word.
-;; Finally, it can export vocabularies that have the same tags, or are
-;; between two dates.
+;; Eventually, org_arc_todo would help you to sync your local notes in
+;; Org-mode with the project tasks in Phabricator, but it is not quite
+;; there yet. At this moment, it can only send your notes to
+;; Phabricator.
 ;;
 ;;; Use:
 ;;
-;; To use voca-builder 
-;;   (setq voca-builder/voca-file "~/.vocabulary.org")
-;;   (setq voca-builder/export-file "~/.voca-builder-temp.org")
-;;   (setq voca-builder/current-tag "Demo")
-;;   (global-set-key (kbd "<f4>") 'voca-builder/search-popup) 
-;;   
-;; To export all the vocabulary tagged by TLOTR 
-;;   (voca-builder/extract-by-tags "TLOTR") , get all the vocabularies tagged
-;;   ;; by TLOTR,  The Lord of The Rings.
-;; To export all the vocabulary recored between 2015-01-01 and 2015-03-01
-;;   (voca-builder/extract-period "2015-01-01" "2015-03-01")
+;; To send current node in org-mode to Phabricator
+;;   (org-arc-todo)
+;;   (org-arc-todo-finish)
 ;;
 ;;; Code:
 
