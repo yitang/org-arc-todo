@@ -49,45 +49,46 @@
 ;;; Code:
 
 ;; requires
+(require 'org)
 
-(setq arcanist-todo--user-template "
+; templates, define as constant atm.
+(defconst org-arc-todo--user-template "
 ## [subscribers]
 --cc=\"%s\"")
-(setq arcanist-todo--project-template "
+(defconst org-arc-todo--project-template "
 ## [project]
 --project=\"%s\"")
-(setq arcanist-todo--task-summary-template "
+(defconst org-arc-todo--task-summary-template "
 ## [summary of task]
 \"%s\"")
 
-(defun arcanist-todo ()
-  "Create acranist todos"
+; main functions
+(defun org-arc-todo ()
+  "parse a node in org-mode for arc todo"
   (interactive)
-  (let* (;(dir (arcanist-find-root-path))
-	 ;;(config (arcanist-parse-config dir))
-         (headline (replace-regexp-in-string "\\*+ " "" (org-entry-get nil "ITEM")))
+  (let* ((headline (replace-regexp-in-string "\\*+ " "" (org-entry-get nil "ITEM")))
          (proj_name (org-entry-get (point) "arc_project" t))
-         (users (org-entry-get (point) "arc_user"))
-         )
-    (generate-new-buffer "*arcanist-todo*")    
+         (users (org-entry-get (point) "arc_user")))
+    (generate-new-buffer "*arcanist-todo*")
     (with-current-buffer "*arcanist-todo*"  
       (erase-buffer)
-      (insert (format arcanist-todo--task-summary-template (or headline "")))
-      (insert (format arcanist-todo--project-template (or proj_name "")))       
+      (insert (format org-arc-todo--task-summary-template (or headline "")))
+      (insert (format org-arc-todo--project-template (or proj_name "")))       
       (mapc '(lambda (arg)
-	       (insert (format arcanist-todo--user-template (or arg ""))))
-            (split-string users ", "))
-      )
+	       (insert (format org-arc-todo--user-template (or arg ""))))
+            (split-string users ", ")))
     (display-buffer "*arcanist-todo*")))
 
-(defun arcanist-todo-finish ()
-  "wrap xx and finish the job"
+(defun org-arc-todo-finish ()
+  "format *arcranist-todo* buffer as argument for arc todo
+command and then execute it"
   (interactive)
   (let* ((content (with-current-buffer "*arcanist-todo*"
                     (goto-char (point-min))
-                    (flush-lines "^##")
-                    (flush-lines "^$")
-                    (goto-char (point-min))
+                    (flush-lines "^##")  ; remove lines start with ##
+                    (flush-lines "^$")   ; remove empty lines 
                     (replace-regexp "\n" " ")
                     (buffer-string))))
     (shell-command (concat "arc todo " content))))
+
+(provide 'org-arc-todo)
