@@ -52,6 +52,7 @@
 \"%s\"")
 
 ; main functions
+;;;###autoload
 (defun org-arc-todo ()
   "parse a node in org-mode for arc todo"
   (interactive)
@@ -68,6 +69,7 @@
             (split-string users ", ")))
     (display-buffer "*arcanist-todo*")))
 
+;;;###autoload
 (defun org-arc-todo-finish ()
   "format *arcranist-todo* buffer as argument for arc todo
 command and then execute it"
