@@ -87,7 +87,7 @@ command and then execute it"
                     (goto-char (point-min))
                     (flush-lines "^##")  ; remove lines start with ##
                     (flush-lines "^$")   ; remove empty lines 
-                    (replace-regexp "\n" " ")
+                    (while (search-forward "\n" nil t) (replace-match "" nil t)) ; replace newline with whitespace
                     (buffer-string))))
     (shell-command (concat "arc todo " content))))
 
