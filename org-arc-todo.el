@@ -1,11 +1,11 @@
-;;;; * org-arc-todo.el --- Helps you build up your vocabulary
+;;; org-arc-todo.el --- Helps you build up your vocabulary
 ;;
 ;; Copyright (C) 2015 Yi Tang
 ;;
 ;; Author: Yi Tang <yi.tang.uk@me.com>
 ;; Keywords: Phabricator
 ;; Created: 28th March 2015
-;; Package-Requires: ((org-mode "8.2"))
+;; Package-Requires: ((org "8.2"))
 ;; URL: https://github.com/yitang/org-arc-todo
 ;; Version: 0.1.0
 ;;
@@ -52,6 +52,7 @@
 \"%s\"")
 
 ; main functions
+;;;###autoload
 (defun org-arc-todo ()
   "parse a node in org-mode for arc todo"
   (interactive)
@@ -63,11 +64,12 @@
       (erase-buffer)
       (insert (format org-arc-todo--task-summary-template (or headline "")))
       (insert (format org-arc-todo--project-template (or proj_name "")))       
-      (mapc '(lambda (arg)
-	       (insert (format org-arc-todo--user-template (or arg ""))))
+      (mapc (lambda (arg)
+	      (insert (format org-arc-todo--user-template (or arg ""))))
             (split-string users ", ")))
     (display-buffer "*arcanist-todo*")))
 
+;;;###autoload
 (defun org-arc-todo-finish ()
   "format *arcranist-todo* buffer as argument for arc todo
 command and then execute it"
@@ -81,3 +83,4 @@ command and then execute it"
     (shell-command (concat "arc todo " content))))
 
 (provide 'org-arc-todo)
+;;; org-arc-todo.el ends here
