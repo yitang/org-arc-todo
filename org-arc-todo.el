@@ -1,11 +1,11 @@
-;;;; * org-arc-todo.el --- Helps you build up your vocabulary
+;;; org-arc-todo.el --- Helps you build up your vocabulary
 ;;
 ;; Copyright (C) 2015 Yi Tang
 ;;
 ;; Author: Yi Tang <yi.tang.uk@me.com>
 ;; Keywords: Phabricator
 ;; Created: 28th March 2015
-;; Package-Requires: ((org-mode "8.2"))
+;; Package-Requires: ((org "8.2"))
 ;; URL: https://github.com/yitang/org-arc-todo
 ;; Version: 0.1.0
 ;;
@@ -81,3 +81,4 @@ command and then execute it"
     (shell-command (concat "arc todo " content))))
 
 (provide 'org-arc-todo)
+;;; org-arc-todo.el ends here
